@@ -46,7 +46,99 @@
 </head>
 
 <body>
-    
+    <div class="container">
+        <div class="row mb-3">
+            <div class="col">
+                <h1>Overtime Admin Page</h1>
+            </div>
+        </div>
+      <div class="row mb-3">
+        <div class="col">
+          <div class="card border-dark">
+            <div class="card-header">
+              <b>Current Requests</b>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th scope="col">Name</th>
+                          <th scope="col">Department</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Start Time</th>
+                          <th scope="col">End Time</th>
+                          <th scope="col">Appoval</th>
+                        </tr>
+                  </thead>
+                      <tbody id="overtime-requests">
+                      </tbody>
+                </table>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card border-dark">
+                    <div class="card-header">
+                      <b>Currently Offered Overtime</b>
+                    </div>
+                    <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Department</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Start Time</th>
+                                <th scope="col">End Time</th>
+                              </tr>
+                        </thead>
+                            <tbody id="overtime-table">
+                            </tbody>
+                    </table>
+                    </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="card border-dark">
+                    <div class="card-header">
+                      <b>Add New Overtime</b>
+                    </div>
+                    <div class="card-body">
+                          <form id="request-form">
+                              <div class="form-group">
+                                      <label for="department">Department</label>
+                                      <select class="form-control" id="department" required>
+                                        <option>Camping World</option>
+                                        <option>Member Services</option>
+                                        <option>Elite Team</option>
+                                        <option>Retail Customer Service</option>
+                                        <option>ESP Customer Service</option>
+                                      </select>
+                              </div>
+                            <div class="form-group">
+                              <label for="date">Date of Overtime</label>
+                              <input type="date" class="form-control" id="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="start-time">Start Time</label>
+                                <input placeholder="Selected time" type="time" id="start-time" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="end-time">End Time</label>
+                                <input placeholder="Selected time" type="time" id="end-time" class="form-control">
+                            </div>                            
+                            <button type="submit" class="btn btn-primary mt-3" id="request-submit">Submit</button>
+                        </form>
+                      </div>
+                      </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
