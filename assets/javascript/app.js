@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+    var database = firebase.database();
+
     $('#new-overtime-submit').click(function(){
 
         event.preventDefault();
@@ -9,6 +11,12 @@ $(document).ready(function(){
         var startTime = $('#new-start-time').val();
         var endTime = $('#new-end-time').val();
 
+        database.ref().set({
+            department: department,
+            date: date,
+            startTime: startTime,
+            endTime: endTime
+          });
     })
 
 })
