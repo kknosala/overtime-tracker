@@ -15,7 +15,7 @@ var database = firebase.database();
 $(document).ready(function(){
 
     $('#new-overtime-submit').click(function(){
-
+        
         event.preventDefault();
 
         var department = $('#new-department').val();
@@ -29,6 +29,22 @@ $(document).ready(function(){
             startTime: startTime,
             endTime: endTime
           });
+    })
+
+    $('#request-submit').click(function(){
+
+        var userName = $('#user-name').val().trim();
+        var userDepartment = $('#user-department').val();
+        var userDate = $('#user-date').val();
+        var userStartTime = $('#user-start-time').val();
+        var userEndTime = $('#user-end-time').val();
+
+        console.log(userName);
+        console.log(userDepartment);
+        console.log(userDate);
+        console.log(userStartTime);
+        console.log(userEndTime);
+
     })
 
     database.ref().on('child_added', function(available){
@@ -53,12 +69,20 @@ $(document).ready(function(){
         )
 
         var buttons =$('<td>');
-        var remove = $('<button>').text('Remove');
+        var remove = $('<button>').text('Remove').addClass('btn btn-primary').attr({value:available.key, id:'remove'});
         
         buttons.append(remove);
         adminRow.append(buttons);
         $('#admin-overtime-table').append(adminRow);
         $('#user-overtime-table').append(userRow);
+    })
+
+    $(document).on('click', '#remove', function(){
+        
+        var childId = this.value;
+        console.log(childId);
+        database.ref(childId).remove();
+        location.reload();
     })
 
 })

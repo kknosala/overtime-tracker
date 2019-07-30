@@ -17,6 +17,21 @@
    <!-- CSS File -->
    <link rel="stylesheet" href="assets/css/style.css" />
 
+   <!-- JQuery CDN -->
+   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+   <!-- Moment JS CDN -->
+   <script src="https://momentjs.com/downloads/moment.js"></script>
+
+   <!-- Firebase SDK -->
+   <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+   
+   <!-- Firebase Database SDK-->
+   <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+    <!-- App JS file -->
+   <script src="assets/javascript/app.js"></script>
+
     <title>Available Overtime</title>
 
 </head>
@@ -61,11 +76,11 @@
                           <form id="request-form">
                             <div class="form-group">
                               <label for="name-input">Your Name</label>
-                              <input type="email" class="form-control" id="name-input" aria-describedby="nameInput" placeholder="First and Last Name" required>
+                              <input type="text" class="form-control" id="user-name" aria-describedby="nameInput" placeholder="First and Last Name" required>
                             </div>
                               <div class="form-group">
                                       <label for="department">Your Department</label>
-                                      <select class="form-control" id="department" required>
+                                      <select class="form-control" id="user-department" required>
                                         <option>Camping World</option>
                                         <option>Member Services</option>
                                         <option>Elite Team</option>
@@ -75,15 +90,15 @@
                               </div>
                             <div class="form-group">
                               <label for="date">Date of Overtime</label>
-                              <input type="date" class="form-control" id="date" required>
+                              <input type="date" class="form-control" id="user-date" required>
                             </div>
                             <div class="form-group">
                                 <label for="start-time">Start Time</label>
-                                <input placeholder="Selected time" type="time" id="start-time" class="form-control">
+                                <input placeholder="Selected time" type="time" id="user-start-time" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="end-time">End Time</label>
-                                <input placeholder="Selected time" type="time" id="end-time" class="form-control">
+                                <input placeholder="Selected time" type="time" id="user-end-time" class="form-control">
                             </div>                            
                             <button type="submit" class="btn btn-primary mt-3" id="request-submit">Submit</button>
                         </form>
@@ -92,21 +107,6 @@
             </div>
         </div>
     </div>
-
-    <!-- JQuery CDN -->
-   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-
-   <!-- Moment JS CDN -->
-   <script src="https://momentjs.com/downloads/moment.js"></script>
-
-   <!-- Firebase SDK -->
-   <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
-   
-   <!-- Firebase Database SDK-->
-   <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
-
-    <!-- App JS file -->
-   <script src="assets/javascript/app.js"></script>
 
 </body>
 
