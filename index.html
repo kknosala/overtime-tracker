@@ -17,31 +17,6 @@
    <!-- CSS File -->
    <link rel="stylesheet" href="assets/css/style.css" />
 
-   <!-- Firebase SDK -->
-   <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
-
-   <!-- Firebase Link -->
-   <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-          apiKey: "AIzaSyAoB_7LDFq5ZsDQ--nuL0RvtU-FDro6aRU",
-          authDomain: "overtime-app.firebaseapp.com",
-          databaseURL: "https://overtime-app.firebaseio.com",
-          projectId: "overtime-app",
-          storageBucket: "",
-          messagingSenderId: "780230153008",
-          appId: "1:780230153008:web:aff23c7cce469559"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-      </script>
-
-   <!-- JQuery CDN -->
-   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-
-    <!-- App JS file -->
-   <script src="assets/javascript/app.js"></script>
-
     <title>Available Overtime</title>
 
 </head>
@@ -69,7 +44,7 @@
                                 <th scope="col">End Time</th>
                               </tr>
                         </thead>
-                            <tbody id="overtime-table">
+                            <tbody id="user-overtime-table">
                             </tbody>
                     </table>
                     </div>
@@ -117,6 +92,22 @@
             </div>
         </div>
     </div>
+
+    <!-- JQuery CDN -->
+   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+
+   <!-- Moment JS CDN -->
+   <script src="https://momentjs.com/downloads/moment.js"></script>
+
+   <!-- Firebase SDK -->
+   <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+   
+   <!-- Firebase Database SDK-->
+   <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+    <!-- App JS file -->
+   <script src="assets/javascript/app.js"></script>
+
 </body>
 
 </html>

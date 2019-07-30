@@ -33,20 +33,30 @@ $(document).ready(function(){
 
     database.ref().on('child_added', function(available){
 
-        var row = $('<tr>').append(
+        var dateFormat = moment(available.val().date).format('MMM Do YYYY');
+        console.log(dateFormat);
+
+        var adminRow = $('<tr>').append(
             $('<td>').text(available.val().department),
-            $('<td>').text(available.val().date),
+            $('<td>').text(dateFormat),
             $('<td>').text(available.val().startTime),
             $('<td>').text(available.val().endTime),
         );
         
-        var buttons =$('<td>');
-        var approval = $('<button>Approve');
-        var decline = $('<button>Decline');
+        var userRow =$('<tr>').append(
+            $('<td>').text(available.val().department),
+            $('<td>').text(available.val().date),
+            $('<td>').text(available.val().startTime),
+            $('<td>').text(available.val().endTime),
+        )
 
-        buttons.append(approval, decline);
-        row.append(buttons);
-        $('#overtime-table').append(row);
+        var buttons =$('<td>');
+        var remove = $('<button>').text('Remove');
+        
+        buttons.append(remove);
+        adminRow.append(buttons);
+        $('#admin-overtime-table').append(adminRow);
+        $('#user-overtime-table').append(userRow);
     })
 
 })
