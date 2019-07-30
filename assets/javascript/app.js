@@ -34,20 +34,22 @@ $(document).ready(function(){
     database.ref().on('child_added', function(available){
 
         var dateFormat = moment(available.val().date).format('MMM Do YYYY');
-        console.log(dateFormat);
+        var startTimeFormat = moment(available.val().startTime, 'HH:mm').format('h:mm a');
+        var endTimeFormat = moment(available.val().endTime, 'HH:mm').format('h:mm a')
+        
 
         var adminRow = $('<tr>').append(
             $('<td>').text(available.val().department),
             $('<td>').text(dateFormat),
-            $('<td>').text(available.val().startTime),
-            $('<td>').text(available.val().endTime),
+            $('<td>').text(startTimeFormat),
+            $('<td>').text(endTimeFormat),
         );
         
         var userRow =$('<tr>').append(
             $('<td>').text(available.val().department),
-            $('<td>').text(available.val().date),
-            $('<td>').text(available.val().startTime),
-            $('<td>').text(available.val().endTime),
+            $('<td>').text(dateFormat),
+            $('<td>').text(startTimeFormat),
+            $('<td>').text(endTimeFormat),
         )
 
         var buttons =$('<td>');
