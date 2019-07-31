@@ -33,17 +33,21 @@ $(document).ready(function(){
 
     $('#request-submit').click(function(){
 
+        event.preventDefault();
         var userName = $('#user-name').val().trim();
         var userDepartment = $('#user-department').val();
         var userDate = $('#user-date').val();
         var userStartTime = $('#user-start-time').val();
         var userEndTime = $('#user-end-time').val();
 
-        console.log(userName);
-        console.log(userDepartment);
-        console.log(userDate);
-        console.log(userStartTime);
-        console.log(userEndTime);
+        database.ref('/RequestOvertime').push({
+            userName: userName,
+            userDepartment: userDepartment,
+            userDate: userDate,
+            userStartTime: userStartTime,
+            userEndTime: userEndTime,
+            dateAdded: firebase.database.ServerValue.TIMESTAMP
+        });
 
     })
     
