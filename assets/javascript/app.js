@@ -81,6 +81,37 @@ $(document).ready(function(){
         $('#user-overtime-table').append(userRow);
     })
 
+    // dataRef.ref().orderByChild("dateAdded").limitToLast(1).on
+    database.ref('RequestOvertime').on('child_added', function(snapshot){
+
+        var userDateFormat = moment(snapshot.val().userDate).format('MMM Do YYYY');
+        var userStartTimeFormat = moment(snapshot.val().userStartTime, 'HH:mm').format('h:mm a');
+        var userEndTimeFormat = moment(snapshot.val().userEndTime, 'HH:mm').format('h:mm a');
+
+        console.log(snapshot.val().userName);
+        console.log(snapshot.val().userDepartment);
+        console.log(userDateFormat);
+        console.log(userStartTimeFormat);
+        console.log(userEndTimeFormat);
+
+        var adminApprove = $('<tr>').append(
+            $('<td>').text(snapshot.val().userName),
+            $('<td>').text(snapshot.val().userDepartment),
+            $('<td>').text(userDateFormat),
+            $('<td>').text(userStartTimeFormat),
+            $('<td>').text(userEndTimeFormat)
+        )
+
+        var buttons = $('<td>')
+        var approveButton = $('<button>').text('Approve').addClass('btn btn-success mr-2').attr('value', 'approve');
+        var denyButton = $('<button>').text('Deny').addClass('btn btn-danger').attr('value', 'deny');
+
+        buttons.append(approveButton);
+        buttons.append(denyButton);
+        adminApprove.append(buttons);
+        $('#overtime-requests').append(adminApprove);
+    })
+
     $(document).on('click', '#remove', function(){
         
         var childId = this.value;
