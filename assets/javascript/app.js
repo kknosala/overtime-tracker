@@ -23,7 +23,7 @@ $(document).ready(function(){
         var startTime = $('#new-start-time').val();
         var endTime = $('#new-end-time').val();
 
-        database.ref('/OvertimeRequest').push({
+        database.ref('/PostedOvertime').push({
             department: department,
             date: date,
             startTime: startTime,
@@ -46,29 +46,30 @@ $(document).ready(function(){
         console.log(userEndTime);
 
     })
+    
+    database.ref('PostedOvertime').on('child_added', function(snapshot){
 
-    database.ref().on('child_added', function(available){
+            var dateFormat = moment(snapshot.val().date).format('MMM Do YYYY')
+            var startTimeFormat = moment(snapshot.val().startTime, 'HH:mm').format('h:mm a');
+            var endTimeFormat = moment(snapshot.val().endTime, 'HH:mm').format('h:mm a')
 
-        var dateFormat = moment(available.val().date).format('MMM Do YYYY');
-        var startTimeFormat = moment(available.val().startTime, 'HH:mm').format('h:mm a');
-        var endTimeFormat = moment(available.val().endTime, 'HH:mm').format('h:mm a')
 
         var adminRow = $('<tr>').append(
-            $('<td>').text(available.val().department),
+            $('<td>').text(snapshot.val().department),
             $('<td>').text(dateFormat),
             $('<td>').text(startTimeFormat),
             $('<td>').text(endTimeFormat),
         );
         
         var userRow =$('<tr>').append(
-            $('<td>').text(available.val().department),
+            $('<td>').text(snapshot.val().department),
             $('<td>').text(dateFormat),
             $('<td>').text(startTimeFormat),
             $('<td>').text(endTimeFormat),
         )
 
         var buttons =$('<td>');
-        var remove = $('<button>').text('Remove').addClass('btn btn-primary').attr({value:available.key, id:'remove'});
+        var remove = $('<button>').text('Remove').addClass('btn btn-primary').attr({value:snapshot.key, id:'remove'});
         
         buttons.append(remove);
         adminRow.append(buttons);
@@ -79,8 +80,9 @@ $(document).ready(function(){
     $(document).on('click', '#remove', function(){
         
         var childId = this.value;
-        console.log(childId);
-        database.ref(childId).remove();
+        console.log(childId)
+        
+        database.ref('PostedOvertime').child(childId).remove();
         location.reload();
     })
 
