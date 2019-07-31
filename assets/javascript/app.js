@@ -23,7 +23,7 @@ $(document).ready(function(){
         var startTime = $('#new-start-time').val();
         var endTime = $('#new-end-time').val();
 
-        database.ref().push({
+        database.ref('/OvertimeRequest').push({
             department: department,
             date: date,
             startTime: startTime,
@@ -52,7 +52,6 @@ $(document).ready(function(){
         var dateFormat = moment(available.val().date).format('MMM Do YYYY');
         var startTimeFormat = moment(available.val().startTime, 'HH:mm').format('h:mm a');
         var endTimeFormat = moment(available.val().endTime, 'HH:mm').format('h:mm a')
-        
 
         var adminRow = $('<tr>').append(
             $('<td>').text(available.val().department),
