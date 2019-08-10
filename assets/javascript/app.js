@@ -73,7 +73,7 @@ $(document).ready(function(){
         )
 
         var buttons =$('<td>');
-        var remove = $('<button>').text('Remove').addClass('btn btn-primary').attr({value:snapshot.key, id:'remove'});
+        var remove = $('<button>').text('Remove').addClass('btn btn-danger').attr({value:snapshot.key, id:'remove'});
         
         buttons.append(remove);
         adminRow.append(buttons);
@@ -88,13 +88,7 @@ $(document).ready(function(){
         var userStartTimeFormat = moment(snapshot.val().userStartTime, 'HH:mm').format('h:mm a');
         var userEndTimeFormat = moment(snapshot.val().userEndTime, 'HH:mm').format('h:mm a');
 
-        console.log(snapshot.val().userName);
-        console.log(snapshot.val().userDepartment);
-        console.log(userDateFormat);
-        console.log(userStartTimeFormat);
-        console.log(userEndTimeFormat);
-
-        var adminApprove = $('<tr>').append(
+        var adminApprove = $('<tr>').addClass(snapshot.key).append(
             $('<td>').text(snapshot.val().userName),
             $('<td>').text(snapshot.val().userDepartment),
             $('<td>').text(userDateFormat),
@@ -103,8 +97,8 @@ $(document).ready(function(){
         )
 
         var buttons = $('<td>')
-        var approveButton = $('<button>').text('Approve').addClass('btn btn-success mr-2').attr('value', 'approve');
-        var denyButton = $('<button>').text('Deny').addClass('btn btn-danger').attr('value', 'deny');
+        var approveButton = $('<button>').text('Approve').addClass('btn btn-success mr-2 approve').attr('value', snapshot.key);
+        var denyButton = $('<button>').text('Deny').addClass('btn btn-danger deny').attr('value', snapshot.key);
 
         buttons.append(approveButton);
         buttons.append(denyButton);
@@ -115,10 +109,22 @@ $(document).ready(function(){
     $(document).on('click', '#remove', function(){
         
         var childId = this.value;
-        console.log(childId)
-        
         database.ref('PostedOvertime').child(childId).remove();
         location.reload();
     })
+
+    $(document).on('click', '.approve', function(){
+        var valueId = this.value;
+        $('.' + valueId).addClass('approvedTime');
+    })
+
+    $(document).on('click', '.deny', function(){
+        var valueId = this.value;
+        $('.' + valueId).addClass('deniedTime');
+    })
+
+
+
+
 
 })
