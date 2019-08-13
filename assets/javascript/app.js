@@ -14,7 +14,7 @@ var database = firebase.database();
 
 $(document).ready(function(){
 
-    $('#new-overtime-submit').click(function(){
+    $('#new-overtime-submit').click(function(event){
         
         event.preventDefault();
 
@@ -35,7 +35,7 @@ $(document).ready(function(){
           $('#new-end-time').val('');
     })
 
-    $('#request-submit').click(function(){
+    $('#request-submit').click(function(event){
 
         event.preventDefault();
         var userName = $('#user-name').val().trim();
